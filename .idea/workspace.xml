@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="94ed2f47-8c87-4e1d-bead-cb5e9e5816e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_agg/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog_agg/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../3rdparties/apache-maven-3.8.3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2EicqukJotywOX3JgC2hJSZcohf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MyBlogRdApplication">
+    <configuration name="BlogAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog_admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.blog.blog_admin.BlogAdminApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogAggApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog_agg" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.blog.blog_agg.BlogAggApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.blog.blog.BlogApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogCoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog_core" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.blog.blog_core.BlogCoreApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogDaoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog_dao" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.blog.blog_dao.BlogDaoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogPojoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog_pojo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.blog.blog_pojo.BlogPojoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog_service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.blog.blog_service.BlogServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBlogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="my_blog" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.blog.my_blog.MyBlogApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBlogRdApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="my_blog_rd" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.study.blog.my_blog_rd.MyBlogRdApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="94ed2f47-8c87-4e1d-bead-cb5e9e5816e6" name="Changes" comment="" />
+      <created>1663082043012</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663082043012</updated>
+      <workItem from="1663082044832" duration="5349000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
