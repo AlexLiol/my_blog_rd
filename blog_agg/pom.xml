@@ -14,25 +14,61 @@
         <module>../blog_core</module>
         <module>../blog_pojo</module>
     </modules>
+    <properties>
+        <springboot.version>2.7.3</springboot.version>
+    </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
-                <version>2.7.3</version>
+                <version>${springboot.version}</version>
             </dependency>
-
             <dependency>
-                <groupId></groupId>
+                <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
+                <version>${springboot.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
-                <version>2.7.3</version>
+                <version>${springboot.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <!-- 权限管理 -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring-boot-web-starter</artifactId>
+                <version>1.9.1</version>
+            </dependency>
+
+            <!-- 整合 mybatis-plus-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.30</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.2</version>
+            </dependency>
+
+            <!-- 整合 redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+
+            <!-- 整合日志 -->
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.24</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
