@@ -1,0 +1,23 @@
+2022-10-02 18:14:41.041 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarting,55] - Starting JedisUtilTest using Java 1.8.0_202 on lijianweideMacBook-Pro.local with PID 12134 (started by lijianwei in /Users/lijianwei/Documents/IdeaWorkspace/study/my_blog_rd/blog_admin)
+2022-10-02 18:14:41.041 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStartupProfileInfo,634] - No active profile set, falling back to 1 default profile: "default"
+2022-10-02 18:14:43.043 [main] INFO  c.s.b.b.c.JedisConfig - [redisPoolFactory,52] - 初始化Redis连接池jedisPool成功:127.0.0.1,:6379
+2022-10-02 18:16:47.047 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarting,55] - Starting JedisUtilTest using Java 1.8.0_202 on lijianweideMacBook-Pro.local with PID 12254 (started by lijianwei in /Users/lijianwei/Documents/IdeaWorkspace/study/my_blog_rd/blog_admin)
+2022-10-02 18:16:47.047 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStartupProfileInfo,634] - No active profile set, falling back to 1 default profile: "default"
+2022-10-02 18:16:50.050 [main] INFO  c.s.b.b.c.JedisConfig - [redisPoolFactory,52] - 初始化Redis连接池jedisPool成功:127.0.0.1,:6379
+2022-10-02 18:16:53.053 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarted,61] - Started JedisUtilTest in 6.626 seconds (JVM running for 8.323)
+2022-10-02 18:21:36.036 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarting,55] - Starting JedisUtilTest using Java 1.8.0_202 on lijianweideMacBook-Pro.local with PID 12564 (started by lijianwei in /Users/lijianwei/Documents/IdeaWorkspace/study/my_blog_rd/blog_admin)
+2022-10-02 18:21:36.036 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStartupProfileInfo,634] - No active profile set, falling back to 1 default profile: "default"
+2022-10-02 18:21:38.038 [main] INFO  c.s.b.b.c.JedisConfig - [redisPoolFactory,52] - 初始化Redis连接池jedisPool成功:127.0.0.1,:6379
+2022-10-02 18:21:42.042 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarted,61] - Started JedisUtilTest in 6.649 seconds (JVM running for 8.274)
+2022-10-02 22:49:26.026 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarting,55] - Starting JedisUtilTest using Java 1.8.0_202 on lijianweideMacBook-Pro.local with PID 16175 (started by lijianwei in /Users/lijianwei/Documents/IdeaWorkspace/study/my_blog_rd/blog_admin)
+2022-10-02 22:49:26.026 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStartupProfileInfo,634] - No active profile set, falling back to 1 default profile: "default"
+2022-10-02 22:49:28.028 [main] INFO  c.s.b.b.c.JedisConfig - [redisPoolFactory,52] - 初始化Redis连接池jedisPool成功:127.0.0.1,:6379
+2022-10-02 22:49:32.032 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarted,61] - Started JedisUtilTest in 6.306 seconds (JVM running for 7.907)
+2022-10-02 22:50:37.037 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarting,55] - Starting JedisUtilTest using Java 1.8.0_202 on lijianweideMacBook-Pro.local with PID 16240 (started by lijianwei in /Users/lijianwei/Documents/IdeaWorkspace/study/my_blog_rd/blog_admin)
+2022-10-02 22:50:37.037 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStartupProfileInfo,634] - No active profile set, falling back to 1 default profile: "default"
+2022-10-02 22:50:39.039 [main] INFO  c.s.b.b.c.JedisConfig - [redisPoolFactory,52] - 初始化Redis连接池jedisPool成功:127.0.0.1,:6379
+2022-10-02 22:50:43.043 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarted,61] - Started JedisUtilTest in 6.302 seconds (JVM running for 7.918)
+2022-10-02 22:52:52.052 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarting,55] - Starting JedisUtilTest using Java 1.8.0_202 on lijianweideMacBook-Pro.local with PID 16371 (started by lijianwei in /Users/lijianwei/Documents/IdeaWorkspace/study/my_blog_rd/blog_admin)
+2022-10-02 22:52:52.052 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStartupProfileInfo,634] - No active profile set, falling back to 1 default profile: "default"
+2022-10-02 22:52:54.054 [main] INFO  c.s.b.b.c.JedisConfig - [redisPoolFactory,52] - 初始化Redis连接池jedisPool成功:127.0.0.1,:6379
+2022-10-02 22:52:58.058 [main] INFO  c.s.b.b.u.JedisUtilTest - [logStarted,61] - Started JedisUtilTest in 7.068 seconds (JVM running for 8.834)

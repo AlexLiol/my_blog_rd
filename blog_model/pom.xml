@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>blog_model</artifactId>
+  <dependencies>
+    <dependency>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <groupId>com.baomidou</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+    </dependency>
+
+
+    <dependency>
+      <artifactId>springfox-swagger2</artifactId>
+      <groupId>io.springfox</groupId>
+    </dependency>
+  </dependencies>
+  <description>blog_model</description>
+  <modelVersion>4.0.0</modelVersion>
+  <name>blog_model</name>
+  <parent>
+    <artifactId>blog_agg</artifactId>
+    <groupId>com.study.blog</groupId>
+    <relativePath>../blog_agg/pom.xml</relativePath>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <version>0.0.1-SNAPSHOT</version>
+
+</project>

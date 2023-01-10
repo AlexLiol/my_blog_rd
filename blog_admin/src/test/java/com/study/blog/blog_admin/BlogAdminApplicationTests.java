@@ -3,9 +3,11 @@ package com.study.blog.blog_admin;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest class BlogAdminApplicationTests {
+@SpringBootTest
+class BlogAdminApplicationTests {
 
-    @Test void contextLoads() {
+    @Test
+    void contextLoads() {
     }
 
 }

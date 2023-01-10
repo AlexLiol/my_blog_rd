@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>blog_service</artifactId>
 
-    <parent>
-        <groupId>com.study.blog</groupId>
-        <artifactId>blog_agg</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../blog_agg/pom.xml</relativePath>
-    </parent>
+  <dependencies>
+    <dependency>
+      <artifactId>blog_dao</artifactId>
+      <groupId>com.study.blog</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
 
+    <dependency>
+      <artifactId>spring-boot-starter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <description>blog_service</description>
+  <modelVersion>4.0.0</modelVersion>
+  <name>blog_service</name>
+  <parent>
+    <artifactId>blog_agg</artifactId>
     <groupId>com.study.blog</groupId>
-    <artifactId>blog_service</artifactId>
+    <relativePath>../blog_agg/pom.xml</relativePath>
     <version>0.0.1-SNAPSHOT</version>
-    <name>blog_service</name>
-    <description>blog_service</description>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+  </parent>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.study.blog</groupId>
-            <artifactId>blog_dao</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+  <version>0.0.1-SNAPSHOT</version>
 
 </project>

@@ -1,76 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.study.blog</groupId>
-    <artifactId>blog_agg</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>../my_blog</module>
-        <module>../blog_admin</module>
-        <module>../blog_service</module>
-        <module>../blog_dao</module>
-        <module>../blog_core</module>
-        <module>../blog_pojo</module>
-    </modules>
-    <properties>
-        <springboot.version>2.7.3</springboot.version>
-    </properties>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>blog_agg</artifactId>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <artifactId>spring-boot-starter</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>${springboot.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>${springboot.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <scope>test</scope>
+        <version>${springboot.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>spring-boot-configuration-processor</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>${springboot.version}</version>
+      </dependency>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <version>${springboot.version}</version>
-                <scope>test</scope>
-            </dependency>
+      <!-- 权限管理 -->
+      <dependency>
+        <artifactId>shiro-spring</artifactId>
+        <groupId>org.apache.shiro</groupId>
+        <version>1.9.1</version>
+      </dependency>
+      <dependency>
+        <artifactId>java-jwt</artifactId>
+        <groupId>com.auth0</groupId>
+        <version>4.0.0</version>
+      </dependency>
 
-            <!-- 权限管理 -->
-            <dependency>
-                <groupId>org.apache.shiro</groupId>
-                <artifactId>shiro-spring-boot-web-starter</artifactId>
-                <version>1.9.1</version>
-            </dependency>
+      <!-- 整合 mybatis-plus-->
+      <dependency>
+        <artifactId>mysql-connector-java</artifactId>
+        <groupId>mysql</groupId>
+        <version>8.0.30</version>
+      </dependency>
+      <dependency>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <groupId>com.baomidou</groupId>
+        <version>3.5.2</version>
+      </dependency>
 
-            <!-- 整合 mybatis-plus-->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.30</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.5.2</version>
-            </dependency>
+      <!-- 整合 redis -->
+      <dependency>
+        <artifactId>jedis</artifactId>
+        <groupId>redis.clients</groupId>
+        <version>4.2.3</version>
+      </dependency>
 
-            <!-- 整合 redis -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-redis</artifactId>
-                <version>${springboot.version}</version>
-            </dependency>
+      <!-- 整合日志 -->
 
-            <!-- 整合日志 -->
+      <dependency>
+        <artifactId>lombok</artifactId>
+        <groupId>org.projectlombok</groupId>
+        <version>1.18.24</version>
+      </dependency>
 
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.24</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+      <!-- code generator -->
+      <dependency>
+        <artifactId>spring-boot-starter-freemarker</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>${springboot.version}</version>
+      </dependency>
+      <dependency>
+        <artifactId>springfox-swagger2</artifactId>
+        <groupId>io.springfox</groupId>
+        <version>3.0.0</version>
+      </dependency>
+      <dependency>
+        <artifactId>mybatis-plus-generator</artifactId>
+        <groupId>com.baomidou</groupId>
+        <version>3.5.3</version>
+      </dependency>
+      <dependency>
+        <artifactId>velocity-engine-core</artifactId>
+        <groupId>org.apache.velocity</groupId>
+        <version>2.1</version>
+      </dependency>
+
+
+      <dependency>
+        <artifactId>fastjson</artifactId>
+        <groupId>com.alibaba</groupId>
+        <version>1.2.69</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>commons-lang3</artifactId>
+        <groupId>org.apache.commons</groupId>
+        <version>3.12.0</version>
+      </dependency>
+
+      <dependency>
+        <artifactId>junit</artifactId>
+        <groupId>junit</groupId>
+        <scope>test</scope>
+        <version>4.13.2</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <groupId>com.study.blog</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <modules>
+    <module>../my_blog</module>
+    <module>../blog_admin</module>
+    <module>../blog_service</module>
+    <module>../blog_dao</module>
+    <module>../blog_core</module>
+    <module>../blog_model</module>
+  </modules>
+  <packaging>pom</packaging>
+  <properties>
+    <springboot.version>2.7.3</springboot.version>
+  </properties>
+
+  <version>0.0.1-SNAPSHOT</version>
 
 </project>

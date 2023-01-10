@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>blog_core</artifactId>
 
-    <parent>
-        <groupId>com.study.blog</groupId>
-        <artifactId>blog_agg</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../blog_agg/pom.xml</relativePath>
-    </parent>
+  <dependencies>
+    <dependency>
+      <artifactId>blog_model</artifactId>
+      <groupId>com.study.blog</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <artifactId>commons-lang3</artifactId>
+      <groupId>org.apache.commons</groupId>
+    </dependency>
 
-    <artifactId>blog_core</artifactId>
+
+    <dependency>
+      <artifactId>fastjson</artifactId>
+      <groupId>com.alibaba</groupId>
+    </dependency>
+  </dependencies>
+
+  <description>blog_core</description>
+  <modelVersion>4.0.0</modelVersion>
+  <name>blog_core</name>
+  <parent>
+    <artifactId>blog_agg</artifactId>
+    <groupId>com.study.blog</groupId>
+    <relativePath>../blog_agg/pom.xml</relativePath>
     <version>0.0.1-SNAPSHOT</version>
-    <name>blog_core</name>
-    <description>blog_core</description>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
+  </parent>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <version>0.0.1-SNAPSHOT</version>
 
 </project>

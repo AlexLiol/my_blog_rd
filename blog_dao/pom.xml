@@ -1,61 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>blog_dao</artifactId>
 
-    <parent>
-        <groupId>com.study.blog</groupId>
-        <artifactId>blog_agg</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../blog_agg/pom.xml</relativePath>
-    </parent>
+  <dependencies>
+    <dependency>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
 
-    <artifactId>blog_dao</artifactId>
+    <dependency>
+      <artifactId>blog_model</artifactId>
+      <groupId>com.study.blog</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <artifactId>blog_core</artifactId>
+      <groupId>com.study.blog</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!-- 整合 mybatis-plus -->
+    <dependency>
+      <artifactId>mysql-connector-java</artifactId>
+      <groupId>mysql</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <groupId>com.baomidou</groupId>
+    </dependency>
+
+    <!-- code generator -->
+    <dependency>
+      <artifactId>spring-boot-starter-freemarker</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>springfox-swagger2</artifactId>
+      <groupId>io.springfox</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>mybatis-plus-generator</artifactId>
+      <groupId>com.baomidou</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>velocity-engine-core</artifactId>
+      <groupId>org.apache.velocity</groupId>
+    </dependency>
+
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+    </dependency>
+  </dependencies>
+
+  <description>blog_dao</description>
+  <modelVersion>4.0.0</modelVersion>
+  <name>blog_dao</name>
+  <parent>
+    <artifactId>blog_agg</artifactId>
+    <groupId>com.study.blog</groupId>
+    <relativePath>../blog_agg/pom.xml</relativePath>
     <version>0.0.1-SNAPSHOT</version>
-    <name>blog_dao</name>
-    <description>blog_dao</description>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.study.blog</groupId>
-            <artifactId>blog_pojo</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <!-- 整合 mybatis-plus -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-
-        <!-- 整合 redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-    </dependencies>
+  </parent>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <version>0.0.1-SNAPSHOT</version>
 
 </project>
