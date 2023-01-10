@@ -5,27 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15f61d10-e6ce-4e98-af8e-6c7f06990db9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/blog_model/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog_model/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/BlogAdminApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/BlogAdminApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/src/test/java/com/study/blog/blog_admin/BlogAdminApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/test/java/com/study/blog/blog_admin/BlogAdminApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_logs/sys-error.2022-10-01.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_logs/sys-error.2022-10-04.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_logs/sys-error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_logs/sys-info.2022-10-01.0.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin_logs/sys-info.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/admin_logs/sys-error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/admin_logs/sys-info.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/ArticleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/CategoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/CommentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/TopNavConfigController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/UserController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blog_agg/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog_agg/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog_core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_dao/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_pojo/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_pojo/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_pojo/src/main/java/com/study/blog/blog_pojo/TestUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog_service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_blog/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/my_blog/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_blog/src/main/java/com/study/blog/my_blog/MyBlogApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/my_blog/src/main/java/com/study/blog/my_blog/MyBlogApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_blog/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/my_blog/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_blog/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/my_blog/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_blog/src/test/java/com/study/blog/my_blog/MyBlogApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/my_blog/src/test/java/com/study/blog/my_blog/MyBlogApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +71,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/blog_core/src/main/java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog_core/src/main/java/com/study/blog/blog_core" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog_model" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -219,7 +213,7 @@
       <workItem from="1665324732988" duration="139000" />
       <workItem from="1665324890600" duration="4118000" />
       <workItem from="1673279684071" duration="17000" />
-      <workItem from="1673279716677" duration="1608000" />
+      <workItem from="1673279716677" duration="3208000" />
     </task>
     <servers />
   </component>
