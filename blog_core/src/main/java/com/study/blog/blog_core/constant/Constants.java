@@ -15,6 +15,11 @@ public class Constants {
     public static final long JWT_TOKEN_EXPIRE_TIME = 1000 * 60 * 60 * 24;
 
     /**
+     * jwt token prefix
+     */
+    public static final String JWT_TOKEN_PREFIX = "Bearer ";
+
+    /**
      * JWT - username
      */
     public static final String USERNAME = "username";

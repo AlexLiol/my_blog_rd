@@ -2,7 +2,6 @@ package com.study.blog.blog_model.pojo;
 
 import java.time.LocalDateTime;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -18,7 +17,7 @@ import lombok.Setter;
  * </p>
  *
  * @author Alex Li
- * @since 2022-10-03
+ * @since 2023-01-14
  */
 @Getter
 @Setter
@@ -28,7 +27,7 @@ public class Permission extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id")
     private Long id;
 
     @ApiModelProperty("上级菜单ID")
@@ -40,16 +39,12 @@ public class Permission extends BaseEntity {
     private String name;
 
     @ApiModelProperty("权限描述")
-    @TableField("remark")
-    private String remark;
+    @TableField("description")
+    private String description;
 
     @ApiModelProperty("权限类型，1-菜单，2-按钮")
     @TableField("type")
-    private Byte type;
-
-    @ApiModelProperty("0-未删除，1-已删除")
-    @TableField("is_delete")
-    private Boolean isDelete;
+    private Integer type;
 
     @ApiModelProperty("创建时间")
     @TableField("create_time")

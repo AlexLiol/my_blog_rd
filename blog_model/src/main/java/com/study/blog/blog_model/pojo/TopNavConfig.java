@@ -18,7 +18,7 @@ import lombok.Setter;
  * </p>
  *
  * @author Alex Li
- * @since 2022-10-03
+ * @since 2023-01-14
  */
 @Getter
 @Setter
@@ -28,7 +28,7 @@ public class TopNavConfig extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id")
     private Long id;
 
     @ApiModelProperty("顶部导航栏名称")

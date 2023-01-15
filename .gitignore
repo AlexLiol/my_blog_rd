@@ -32,3 +32,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+admin_logs
+logs

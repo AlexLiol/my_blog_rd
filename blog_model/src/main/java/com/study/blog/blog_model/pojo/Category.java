@@ -2,7 +2,6 @@ package com.study.blog.blog_model.pojo;
 
 import java.time.LocalDateTime;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -18,7 +17,7 @@ import lombok.Setter;
  * </p>
  *
  * @author Alex Li
- * @since 2022-10-03
+ * @since 2023-01-14
  */
 @Getter
 @Setter
@@ -28,7 +27,7 @@ public class Category extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id")
     private Long id;
 
     @ApiModelProperty("分类名称")

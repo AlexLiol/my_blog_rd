@@ -9,7 +9,7 @@ import com.study.blog.blog_model.pojo.Article;
  * </p>
  *
  * @author Alex Li
- * @since 2022-10-04
+ * @since 2023-01-14
  */
 public interface ArticleMapper extends BaseMapper<Article> {
 

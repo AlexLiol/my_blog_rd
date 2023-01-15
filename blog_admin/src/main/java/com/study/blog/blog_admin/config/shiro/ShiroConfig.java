@@ -77,7 +77,8 @@ public class ShiroConfig {
         // 公开接口
         // filterChainDefinitionMap.put("/api/**", "anon");
         // 登录接口放开
-        filterChainDefinationMap.put("/user/login", "anon");
+        filterChainDefinationMap.put("/api/user/login", "anon");
+        filterChainDefinationMap.put("/api/user/register", "anon");
         // 所有接口通过自定义的 JWTFilter
         filterChainDefinationMap.put("/**", "jwt");
         factoryBean.setFilterChainDefinitionMap(filterChainDefinationMap);

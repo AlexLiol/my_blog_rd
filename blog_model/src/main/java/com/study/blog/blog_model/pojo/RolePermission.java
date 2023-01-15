@@ -18,7 +18,7 @@ import lombok.Setter;
  * </p>
  *
  * @author Alex Li
- * @since 2022-10-04
+ * @since 2023-01-14
  */
 @Getter
 @Setter
@@ -36,10 +36,6 @@ public class RolePermission extends BaseEntity {
     @TableField("permission_id")
     private Long permissionId;
 
-    @ApiModelProperty("0-未删除，1-已删除")
-    @TableField("is_delete")
-    private Boolean isDelete;
-
     @ApiModelProperty("创建时间")
     @TableField("create_time")
     private LocalDateTime createTime;
@@ -48,6 +44,6 @@ public class RolePermission extends BaseEntity {
     @TableField("update_time")
     private LocalDateTime updateTime;
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id")
     private Long id;
 }

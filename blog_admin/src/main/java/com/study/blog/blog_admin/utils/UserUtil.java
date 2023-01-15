@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.study.blog.blog_core.constant.Constants;
 import com.study.blog.blog_model.pojo.User;
-import com.study.blog.blog_service.service.service.IUserService;
+import com.study.blog.blog_service.service.IUserService;
 
 /**
  * @ClassName UserUtil
@@ -32,6 +32,6 @@ public class UserUtil {
         String token = SecurityUtils.getSubject().getPrincipal().toString();
         // 获取 username
         String username = JwtUtil.getClaim(token, Constants.USERNAME);
-        return null;
+        return userService.getByUsername(username);
     }
 }

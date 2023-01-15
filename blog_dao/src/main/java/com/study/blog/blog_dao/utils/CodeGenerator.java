@@ -35,8 +35,8 @@ public class CodeGenerator {
                 .xml("mapper.xml").service("service").serviceImpl("service.impl").controller("controller").build();
 
         autoGenerator.packageInfo(packageConfig);
-        StrategyConfig strategyConfig = new StrategyConfig.Builder().entityBuilder().superClass(BaseEntity.class)
-            .enableLombok().enableTableFieldAnnotation().columnNaming(NamingStrategy.underline_to_camel)
+        StrategyConfig strategyConfig = new StrategyConfig.Builder().entityBuilder().superClass(BaseEntity.class).enableLombok()
+            .enableTableFieldAnnotation().columnNaming(NamingStrategy.underline_to_camel)
             .enableFileOverride().mapperBuilder().enableFileOverride().serviceBuilder()
             .superServiceClass("com.study.blog.blog_service.service.IBaseService").enableFileOverride()
             .controllerBuilder().enableRestStyle().enableHyphenStyle().enableFileOverride().build();

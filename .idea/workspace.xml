@@ -5,20 +5,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15f61d10-e6ce-4e98-af8e-6c7f06990db9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_logs/sys-error.2022-10-01.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_logs/sys-error.2022-10-04.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_logs/sys-error.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_logs/sys-info.2022-10-01.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin_logs/sys-info.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/admin_logs/sys-error.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/admin_logs/sys-info.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/ArticleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/CategoryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/CommentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/TopNavConfigController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog_agg/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog_agg/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/config/shiro/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/config/shiro/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/config/shiro/UserRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/config/shiro/UserRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/config/shiro/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/config/shiro/jwt/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/utils/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/utils/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/utils/UserUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/utils/UserUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_admin/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog_admin/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_core/src/main/java/com/study/blog/blog_core/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_core/src/main/java/com/study/blog/blog_core/constant/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_core/src/main/java/com/study/blog/blog_core/constant/DeleteStatusEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_core/src/main/java/com/study/blog/blog_core/constant/ResponseCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_core/src/main/java/com/study/blog/blog_core/constant/ResponseCodeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_core/src/main/java/com/study/blog/blog_core/utils/AesCipherUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_core/src/main/java/com/study/blog/blog_core/utils/AesCipherUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/ArticleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/CommentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/PermissionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/PermissionMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/RolePermissionMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/RolePermissionMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/TopNavConfigMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/TopNavConfigMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/UserRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/mapper/UserRoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/utils/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_dao/src/main/java/com/study/blog/blog_dao/utils/CodeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/resources/mappers/ArticleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/resources/mappers/CategoryMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/resources/mappers/CommentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/resources/mappers/PermissionMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/resources/mappers/RoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/resources/mappers/RolePermissionMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/resources/mappers/TopNavConfigMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/resources/mappers/UserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_dao/src/main/resources/mappers/UserRoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Permission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/RolePermission.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/RolePermission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/TopNavConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/TopNavConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/IArticleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/ICategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/ICommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/IPermissionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/IRolePermissionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/IRoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/ITopNavConfigService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/IUserRoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/IUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl/ArticleServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl/CategoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl/CommentServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl/PermissionServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl/RolePermissionServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl/RoleServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl/TopNavConfigServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl/UserRoleServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl/UserServiceImpl.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +117,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/blog_core/src/main/java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog_model" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -83,13 +129,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/blog_core/src/main/java/com/study/blog/blog_core" />
-      <recent name="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo" />
-      <recent name="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service/impl" />
-      <recent name="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service" />
       <recent name="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service" />
+      <recent name="$PROJECT_DIR$/blog_service/src/main/java/com/study/blog/blog_service/service/service" />
+      <recent name="$PROJECT_DIR$/blog_model/src/main/java/com/study/blog/blog_model/pojo" />
+      <recent name="$PROJECT_DIR$/blog_dao/src/main/resources/mappers" />
+      <recent name="$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/controller" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.study.blog.blog_admin.controller" />
       <recent name="com.study.blog.blog_admin" />
     </key>
   </component>
@@ -100,7 +147,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AesCipherUtil (1)">
+  <component name="RunManager" selected="Spring Boot.BlogAdminApplication">
     <configuration name="AesCipherUtil (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.study.blog.blog_core.utils.AesCipherUtil" />
       <module name="blog_core" />
@@ -185,10 +232,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CodeGenerator" />
         <item itemvalue="Application.AesCipherUtil (1)" />
         <item itemvalue="Application.Base64ConvertUtil" />
         <item itemvalue="Application.AesCipherUtil" />
-        <item itemvalue="Application.CodeGenerator" />
         <item itemvalue="JUnit.JedisUtilTest.TestSetObject" />
       </list>
     </recent_temporary>
@@ -213,12 +260,40 @@
       <workItem from="1665324732988" duration="139000" />
       <workItem from="1665324890600" duration="4118000" />
       <workItem from="1673279684071" duration="17000" />
-      <workItem from="1673279716677" duration="3208000" />
+      <workItem from="1673279716677" duration="3589000" />
+      <workItem from="1673705724208" duration="21879000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/utils/JwtUtil.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/blog_admin/src/main/java/com/study/blog/blog_admin/utils/JwtUtil.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

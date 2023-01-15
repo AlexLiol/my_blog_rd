@@ -9,7 +9,7 @@ import com.study.blog.blog_model.pojo.Category;
  * </p>
  *
  * @author Alex Li
- * @since 2022-10-04
+ * @since 2023-01-14
  */
 public interface CategoryMapper extends BaseMapper<Category> {
 

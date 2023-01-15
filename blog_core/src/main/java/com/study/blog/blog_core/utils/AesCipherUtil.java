@@ -100,8 +100,6 @@ public class AesCipherUtil {
             Cipher cipher = Cipher.getInstance(AES_CIPHER_ALGORITHM_NAME);
             // 根据密钥，对Cipher对象进行初始化，ENCRYPT_MODE表示加密模式
             cipher.init(Cipher.DECRYPT_MODE, desKey);
-            System.out.println(str);
-            System.out.println(Base64ConvertUtil.decode(str));
             byte[] cipherByte = cipher.doFinal(HexConvertUtil.parseHex2Byte(Base64ConvertUtil.decode(str)));
             return new String(cipherByte);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+  <!-- 系统日志输出 -->
+  <logger level="warn" name="org.springframework"/>
+
+  <property name="log.path" value="./admin_logs"/>
+  <!-- 系统模块日志级别控制  -->
+  <!--    <logger name="com.mengzihuatong.device" level="info" />-->
+  <!-- Spring日志级别控制  -->
+  <property name="log.pattern"
+    value="%d{yyyy-MM-dd HH:mm:ss.sss} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n"/>
+
   <!-- 日志存放路径 -->
   <appender class="ch.qos.logback.core.ConsoleAppender" name="console">
     <encoder>
@@ -7,7 +17,7 @@
       <pattern>${log.pattern}</pattern>
     </encoder>
   </appender>
-  <!--	<property name="log.path" value="/data/app/logs" />-->
+<!--  	<property name="log.path" value="/data/app/logs" />-->
   <!-- 日志输出格式,%m输出的信息,%p日志级别,%t线程名,%d日期,%c类的全名 -->
   <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="file_info">
     <encoder>
@@ -63,18 +73,6 @@
       </timeBasedFileNamingAndTriggeringPolicy>
     </rollingPolicy>
   </appender>
-
-  <!-- 系统日志输出 -->
-  <logger level="warn" name="org.springframework"/>
-
-  <property name="log.path" value="./admin_logs"/>
-
-
-  <!-- 系统模块日志级别控制  -->
-  <!--    <logger name="com.mengzihuatong.device" level="info" />-->
-  <!-- Spring日志级别控制  -->
-  <property name="log.pattern"
-    value="%d{yyyy-MM-dd HH:mm:ss.sss} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n"/>
 
   <!--系统操作日志-->
   <root level="info">

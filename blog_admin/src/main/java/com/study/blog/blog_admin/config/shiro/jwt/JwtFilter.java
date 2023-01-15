@@ -1,5 +1,7 @@
 package com.study.blog.blog_admin.config.shiro.jwt;
 
+import static com.study.blog.blog_core.constant.Constants.JWT_TOKEN_PREFIX;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Objects;
@@ -8,6 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.http.HttpStatus;
@@ -19,7 +22,6 @@ import com.study.blog.blog_admin.utils.JwtUtil;
 import com.study.blog.blog_admin.utils.ResponseBeanUtil;
 import com.study.blog.blog_core.constant.Constants;
 import com.study.blog.blog_core.utils.JsonConvertUtil;
-import com.study.blog.blog_core.utils.PropertiesUtil;
 import com.study.blog.blog_model.exception.CustomException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -110,8 +112,15 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
         // 拿到当前Header中Authorization的AccessToken(Shiro中getAuthzHeader方法已经实现)
         JwtToken jwtToken = new JwtToken(this.getAuthzHeader(request));
+        String token = (String) jwtToken.getCredentials();
+        if (StringUtils.startsWith(token, JWT_TOKEN_PREFIX)) {
+            token = token.replace(JWT_TOKEN_PREFIX, "");
+        } else {
+            return false;
+        }
+        JwtToken newJwtToken = new JwtToken(token);
         // 提交给UserRealm进行认证，如果错误他会抛出异常并被捕获
-        this.getSubject(request, response).login(jwtToken);
+        this.getSubject(request, response).login(newJwtToken);
         // 如果没有抛出异常则代表登入成功，返回true
         return true;
     }
@@ -140,6 +149,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     private boolean refreshToken(ServletRequest request, ServletResponse response) {
         // 拿到当前Header中Authorization的AccessToken(Shiro中getAuthzHeader方法已经实现)
         String token = this.getAuthzHeader(request);
+        token = token.replace(JWT_TOKEN_PREFIX, "");
         // 获取 token 中当前账号信息
         String username = JwtUtil.getClaim(token, Constants.USERNAME);
         // 判断 redis 中 refreshToken 是否存在
@@ -149,23 +159,14 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
                 Objects.requireNonNull(JedisUtil.getObject(Constants.PREFIX_SHIRO_REFRESH_TOKEN + username)).toString();
             // 获取当前 AccessToken 中的时间戳，与 RefreshToken 的时间戳对比，如果当前时间戳一致，进行 AccessToken 刷新
             if (JwtUtil.getClaim(token, Constants.CURRENT_TIME_MILLIS).equals(currentTimeMillsRedis)) {
-                // 获取当前最新的时间戳
-                String currentTimeMills = String.valueOf(System.currentTimeMillis());
-                // 读取配置文件，获取 refreshTokenExpireTime 属性
-                PropertiesUtil.readProperties("config.properties");
-                String refreshTokenExpireTime = PropertiesUtil.getProperty("refreshTokenExpireTime");
-                // 设置 RefreshToken 中的时间戳为当前最新时间戳，且刷新过期时间重新为 30min
-                JedisUtil.setObject(Constants.PREFIX_SHIRO_REFRESH_TOKEN + username, currentTimeMills,
-                    Integer.parseInt(refreshTokenExpireTime));
-                // 刷新 AccessToken，设置时间戳为当前时间戳
-                token = JwtUtil.sign(username, currentTimeMills);
+                String newToken = JwtUtil.genToken(username);
                 // 将新刷新后的 token 再次进行 Shiro 的登录
-                JwtToken jwtToken = new JwtToken(token);
+                JwtToken jwtToken = new JwtToken(newToken);
                 // 提交给 UserRealm 进行认证，如果报错会抛出异常并被捕获，如果没有抛出异常则代表登录成功，返回 true
                 this.getSubject(request, response).login(jwtToken);
                 // 最后将刷新后的 token 存放到 response 的 header 中的 Authorization 字段中返回
                 HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-                httpServletResponse.setHeader("Authorization", token);
+                httpServletResponse.setHeader("Authorization", JWT_TOKEN_PREFIX + newToken);
                 httpServletResponse.setHeader("Access-Control-Expose-Headers", "Authorization");
                 return true;
             }

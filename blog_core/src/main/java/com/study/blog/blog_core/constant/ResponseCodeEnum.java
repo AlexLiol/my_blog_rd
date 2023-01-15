@@ -23,7 +23,11 @@ public enum ResponseCodeEnum {
     MOBILE_PATTERN_ERROR(110005, "手机号格式不正确"),
     USER_REPEATED_ERROR(110006, "用户名已存在"),
     USER_NOT_EXISTS_ERROR(110007, "用户不存在"),
-
+    PERMISSION_NAME_EMPTY_ERROR(110008, "权限名称不能为空"),
+    PERMISSION_DESCRIPTION_EMPTY_ERROR(110009, "权限描述不能为空"),
+    PERMISSION_TYPE_NOT_EXIST_ERROR(110010, "权限类型不存在"),
+    PERMISSION_PARENT_ID_NOT_EXIST_ERROR(110011, "权限的父级权限不存在"),
+    PERMISSION_EXISTS_ERROR(110012, "权限已存在"),
     ;
 
     /**

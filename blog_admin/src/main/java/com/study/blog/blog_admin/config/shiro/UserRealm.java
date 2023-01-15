@@ -1,13 +1,17 @@
 package com.study.blog.blog_admin.config.shiro;
 
+import static com.study.blog.blog_core.constant.Constants.JWT_TOKEN_PREFIX;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -23,11 +27,11 @@ import com.study.blog.blog_core.utils.StringUtil;
 import com.study.blog.blog_model.pojo.Permission;
 import com.study.blog.blog_model.pojo.Role;
 import com.study.blog.blog_model.pojo.User;
-import com.study.blog.blog_service.service.service.IPermissionService;
-import com.study.blog.blog_service.service.service.IRolePermissionService;
-import com.study.blog.blog_service.service.service.IRoleService;
-import com.study.blog.blog_service.service.service.IUserRoleService;
-import com.study.blog.blog_service.service.service.IUserService;
+import com.study.blog.blog_service.service.IPermissionService;
+import com.study.blog.blog_service.service.IRolePermissionService;
+import com.study.blog.blog_service.service.IRoleService;
+import com.study.blog.blog_service.service.IUserRoleService;
+import com.study.blog.blog_service.service.IUserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -79,17 +83,20 @@ public class UserRealm extends AuthorizingRealm {
         String username = JwtUtil.getClaim(principals.toString(), Constants.USERNAME);
         // 查询用户
         User user = this.userService.getByUsername(username);
-        log.info("doGetAuthorizationInfo 获取用户信息:{}", user);
         if (user != null) {
             // 查询角色
             List<Long> roleIds = this.userRoleService.getRoleIdsByUserId(user.getId());
-            log.info("doGetAuthorizationInfo 获取用户角色关系数据:{}", roleIds);
+            if (roleIds == null || roleIds.size() == 0) {
+                throw new AuthorizationException("该用户无任何角色");
+            }
             List<Role> roles = this.roleService.listByIds(roleIds);
-            log.info("doGetAuthorizationInfo 获取用户所有角色数据:{}", roles);
             if (CollectionUtils.isNotEmpty(roles)) {
                 simpleAuthenticationInfo.setRoles(roles.stream().map(Role::getName).collect(Collectors.toSet()));
                 // 查询权限
                 List<Long> permissionIds = this.rolePermissionService.getPermissionIdsByRoleIds(roleIds);
+                if (permissionIds == null || permissionIds.size() == 0) {
+                    throw new AuthorizationException("该用户无任何权限");
+                }
                 List<Permission> permissions = this.permissionService.listByIds(permissionIds);
                 simpleAuthenticationInfo
                     .setStringPermissions(permissions.stream().map(Permission::getName).collect(Collectors.toSet()));
@@ -105,6 +112,10 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String jwtToken = (String) token.getCredentials();
+        if (StringUtils.isBlank(jwtToken)) {
+            throw new AuthenticationException("Token不能为空(The token can not blank.)");
+        }
+        jwtToken = jwtToken.replace(JWT_TOKEN_PREFIX, "");
         String username = JwtUtil.getClaim(jwtToken, Constants.USERNAME);
         if (StringUtil.isBlank(username)) {
             throw new AuthenticationException("Token中帐号为空(The account in Token is empty.)");

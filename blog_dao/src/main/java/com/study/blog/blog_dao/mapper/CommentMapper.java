@@ -5,11 +5,11 @@ import com.study.blog.blog_model.pojo.Comment;
 
 /**
  * <p>
- * 分类表 Mapper 接口
+ * 评论表 Mapper 接口
  * </p>
  *
  * @author Alex Li
- * @since 2022-10-04
+ * @since 2023-01-14
  */
 public interface CommentMapper extends BaseMapper<Comment> {
 

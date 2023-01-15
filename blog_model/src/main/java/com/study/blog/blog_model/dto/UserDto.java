@@ -29,12 +29,8 @@ public class UserDto extends User {
         user.setEmail(userDto.getEmail());
         user.setGender(userDto.getGender());
         user.setStatus(userDto.getStatus());
-        user.setIsDelete(userDto.getIsDelete());
-        user.setLastLogin(userDto.getLastLogin());
-        user.setCreateTime(userDto.getCreateTime());
-        user.setUpdateTime(userDto.getUpdateTime());
         user.setMobile(userDto.getMobile());
-        user.setDesc(userDto.getDesc());
+        user.setUserDesc(userDto.getUserDesc());
         return user;
     }
 }

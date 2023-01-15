@@ -4,11 +4,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.study.blog.blog_core.constant.Constants;
 import com.study.blog.blog_core.utils.Base64ConvertUtil;
@@ -24,6 +27,8 @@ import lombok.extern.slf4j.Slf4j;
  * @Version 1.0
  */
 @Slf4j
+@Configuration
+@PropertySource("classpath:config.properties")
 public class JwtUtil {
 
     /**
@@ -35,6 +40,8 @@ public class JwtUtil {
      * jwt 认证加密私钥(base64 加密)
      */
     private static String encryptKey;
+
+    private static String refreshTokenExpireTime;
 
     /**
      * 校验 token 是否正确
@@ -49,6 +56,9 @@ public class JwtUtil {
         } catch (UnsupportedEncodingException e) {
             log.error("JwtToken 认证解密出现 UnsupportedEncodingException 异常:{}", e.getMessage());
             throw new CustomException("JwtToken 认证解密出现 UnsupportedEncodingException 异常:" + e.getMessage());
+        } catch (TokenExpiredException e) {
+            log.info("JWTToken 过期，需要重置");
+            throw e;
         }
     }
 
@@ -62,7 +72,8 @@ public class JwtUtil {
             return jwt.getClaim(claim).asString();
         } catch (JWTDecodeException e) {
             log.error("解密 token 中的公共信息出现 JWTDecodeException:{}", e.getMessage());
-            throw new CustomException("解密 token 中的公共信息出现 JWTDecodeException:" + e.getMessage());
+            throw new CustomException(
+                "解密 token 中的公共信息出现 JWTDecodeException:" + e.getMessage() + ",token:" + token + ",claim:" + claim);
         }
     }
 
@@ -79,7 +90,24 @@ public class JwtUtil {
         } catch (UnsupportedEncodingException e) {
             log.error("JWTToken 加密出现 UnsupportedEncodingException:{}", e.getMessage());
             throw new CustomException("JWTToken 加密出现 UnsupportedEncodingException:" + e.getMessage());
+        } catch (Exception e) {
+            log.error("JWTToken 签名出现错误:{}", e.getMessage());
+            throw new CustomException("JWTToken 签名出现错误:" + e.getMessage());
         }
+    }
+
+    public static String genToken(String username) {
+        // 清除可能存在的 shiro 权限信息缓存
+        String cacheKey = Constants.PREFIX_SHIRO_CACHE + username;
+        if (JedisUtil.exists(cacheKey)) {
+            JedisUtil.delKey(cacheKey);
+        }
+        // 设置 RefreshToken，时间戳为当前时间戳，直接设置即可
+        String currentTimeMills = String.valueOf(System.currentTimeMillis());
+        String refreshTokenKey = Constants.PREFIX_SHIRO_REFRESH_TOKEN + username;
+        JedisUtil.setObject(refreshTokenKey, currentTimeMills, Integer.parseInt(refreshTokenExpireTime));
+        // 从Header中Authorization返回AccessToken，时间戳为当前时间戳
+        return JwtUtil.sign(username, currentTimeMills);
     }
 
     @Value("${accessTokenExpireTime}")
@@ -90,5 +118,10 @@ public class JwtUtil {
     @Value("${encryptJWTKey}")
     public void setEncryptKey(String encryptKey) {
         JwtUtil.encryptKey = encryptKey;
+    }
+
+    @Value("${refreshTokenExpireTime}")
+    public void setRefreshTokenExpireTime(String refreshTokenExpireTime) {
+        JwtUtil.refreshTokenExpireTime = refreshTokenExpireTime;
     }
 }
