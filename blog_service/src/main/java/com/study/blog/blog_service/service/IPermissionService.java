@@ -11,5 +11,5 @@ import com.study.blog.blog_model.pojo.Permission;
  * @since 2023-01-14
  */
 public interface IPermissionService extends IBaseService<Permission> {
-    Permission getByName(String name);
+    Permission getByName(String name, Long id);
 }

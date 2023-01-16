@@ -35,8 +35,8 @@ public class Role extends BaseEntity {
     private String name;
 
     @ApiModelProperty("角色描述")
-    @TableField("remark")
-    private String remark;
+    @TableField("description")
+    private String description;
 
     @ApiModelProperty("创建时间")
     @TableField("create_time")

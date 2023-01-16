@@ -33,4 +33,6 @@ public interface IUserService extends IBaseService<User> {
      * 根据条件分页查询用户
      */
     List<User> getUserByCond(Long id, String username, Integer status, Integer page, Integer pageSize);
+
+    boolean updateUserStatus(Long id, Integer status);
 }

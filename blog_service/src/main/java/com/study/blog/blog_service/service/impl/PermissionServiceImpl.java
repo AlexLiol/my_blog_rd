@@ -20,9 +20,12 @@ import com.study.blog.blog_service.service.IPermissionService;
 public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements IPermissionService {
 
     @Override
-    public Permission getByName(String name) {
+    public Permission getByName(String name, Long exceptId) {
         QueryWrapper<Permission> wrapper = new QueryWrapper<Permission>();
         wrapper.eq("name", name);
+        if (exceptId != null && exceptId > 0) {
+            wrapper.ne("id", exceptId);
+        }
         return this.getOne(wrapper);
     }
 }

@@ -12,4 +12,5 @@ import com.study.blog.blog_model.pojo.Role;
  */
 public interface IRoleService extends IBaseService<Role> {
 
+    Role getByName(String name, Long id);
 }

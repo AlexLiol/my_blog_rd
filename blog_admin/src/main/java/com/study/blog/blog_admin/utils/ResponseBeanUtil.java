@@ -1,6 +1,6 @@
 package com.study.blog.blog_admin.utils;
 
-import com.study.blog.blog_core.constant.ResponseCodeEnum;
+import com.study.blog.blog_core.constant.AdminResponseCodeEnum;
 import com.study.blog.blog_model.common.ResponseBean;
 
 /**
@@ -20,16 +20,16 @@ public class ResponseBeanUtil {
         return new ResponseBean(code, msg, null);
     }
 
-    public static ResponseBean buildResponseByCode(ResponseCodeEnum codeEnum, Object data) {
+    public static ResponseBean buildResponseByCode(AdminResponseCodeEnum codeEnum, Object data) {
         return newResponse(codeEnum.getCode(), codeEnum.getMsg(), data);
     }
 
-    public static ResponseBean buildResponseByCode(ResponseCodeEnum codeEnum) {
+    public static ResponseBean buildResponseByCode(AdminResponseCodeEnum codeEnum) {
         return buildResponseByCode(codeEnum, null);
     }
 
     public static ResponseBean buildSuccessResponse(Object data) {
-        return buildResponseByCode(ResponseCodeEnum.SUCCESS, data);
+        return buildResponseByCode(AdminResponseCodeEnum.SUCCESS, data);
     }
 
     public static ResponseBean buildSuccessResponse() {

@@ -1,10 +1,12 @@
 package com.study.blog.blog_model.dto;
 
-import com.study.blog.blog_model.pojo.User;
+import java.util.ArrayList;
+import java.util.List;
 
-import lombok.AllArgsConstructor;
+import com.study.blog.blog_model.pojo.User;
+import com.study.blog.blog_model.pojo.UserRole;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @ClassName UserDto
@@ -14,11 +16,11 @@ import lombok.NoArgsConstructor;
  * @Version 1.0
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserDto extends User {
 
     private String repeatPassword;
+
+    private List<Long> roleIds;
 
     public static User transformUserDto(UserDto userDto) {
         User user = new User();
@@ -32,5 +34,16 @@ public class UserDto extends User {
         user.setMobile(userDto.getMobile());
         user.setUserDesc(userDto.getUserDesc());
         return user;
+    }
+
+    public static List<UserRole> transformUserRoles(Long userId, List<Long> roleIds) {
+        List<UserRole> userRoles = new ArrayList<>();
+        for (Long roleId : roleIds) {
+            UserRole userRole = new UserRole();
+            userRole.setRoleId(roleId);
+            userRole.setUserId(userId);
+            userRoles.add(userRole);
+        }
+        return userRoles;
     }
 }

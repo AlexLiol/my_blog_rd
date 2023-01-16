@@ -2,6 +2,8 @@ package com.study.blog.blog_model.dto;
 
 import com.study.blog.blog_model.pojo.Permission;
 
+import lombok.Data;
+
 /**
  * @ClassName PermissionDto
  * @Description TODO
@@ -9,6 +11,7 @@ import com.study.blog.blog_model.pojo.Permission;
  * @Date 2023/1/15 16:43
  * @Version 1.0
  */
+@Data
 public class PermissionDto extends Permission {
 
     public static Permission transformUserDto(PermissionDto permissionDto) {

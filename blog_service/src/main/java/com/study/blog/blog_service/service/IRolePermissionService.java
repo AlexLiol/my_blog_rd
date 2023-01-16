@@ -18,4 +18,6 @@ public interface IRolePermissionService extends IBaseService<RolePermission> {
      * 根据角色ID列表获取权限ID列表
      */
     List<Long> getPermissionIdsByRoleIds(List<Long> roleIds);
+
+    boolean removeByRoleId(Long roleId);
 }

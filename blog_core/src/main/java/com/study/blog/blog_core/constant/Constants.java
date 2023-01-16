@@ -29,10 +29,6 @@ public class Constants {
      */
     public static final String CURRENT_TIME_MILLIS        = "currentTimeMillis";
     /**
-     * redis 设置返回结果
-     */
-    public static final String OK                         = "OK";
-    /**
      * redis shiro-refresh_token key 前缀
      */
     public static final String PREFIX_SHIRO_REFRESH_TOKEN = "shiro:refresh_token:";
@@ -40,6 +36,10 @@ public class Constants {
      * redis shiro:cache: 前缀
      */
     public static final String PREFIX_SHIRO_CACHE         = "shiro:cache:";
+    /**
+     * redis 设置返回结果
+     */
+    public static final String OK                         = "OK";
 
     /**
      * 用户名/密码最大长度

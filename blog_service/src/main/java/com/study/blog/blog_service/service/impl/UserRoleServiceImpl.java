@@ -33,4 +33,11 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> i
         List<UserRole> userRoles = this.list(queryWrapper);
         return userRoles.stream().map(UserRole::getRoleId).collect(Collectors.toList());
     }
+
+    @Override
+    public boolean removeByUserId(Long id) {
+        QueryWrapper<UserRole> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", id);
+        return this.remove(wrapper);
+    }
 }

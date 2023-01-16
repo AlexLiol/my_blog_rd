@@ -13,8 +13,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,8 +23,8 @@ import com.study.blog.blog_admin.utils.JedisUtil;
 import com.study.blog.blog_admin.utils.JwtUtil;
 import com.study.blog.blog_admin.utils.ResponseBeanUtil;
 import com.study.blog.blog_admin.utils.UserUtil;
+import com.study.blog.blog_core.constant.AdminResponseCodeEnum;
 import com.study.blog.blog_core.constant.Constants;
-import com.study.blog.blog_core.constant.ResponseCodeEnum;
 import com.study.blog.blog_core.constant.UserStatusEnum;
 import com.study.blog.blog_core.utils.AesCipherUtil;
 import com.study.blog.blog_core.utils.EmailUtil;
@@ -37,6 +35,8 @@ import com.study.blog.blog_model.dto.UserDto;
 import com.study.blog.blog_model.dto.UserListResponse;
 import com.study.blog.blog_model.exception.CustomUnauthorizedException;
 import com.study.blog.blog_model.pojo.User;
+import com.study.blog.blog_model.pojo.UserRole;
+import com.study.blog.blog_service.service.IUserRoleService;
 import com.study.blog.blog_service.service.IUserService;
 
 /**
@@ -49,19 +49,17 @@ import com.study.blog.blog_service.service.IUserService;
  */
 @RestController
 @RequestMapping("/api/user")
-@PropertySource("classpath:config.properties")
 public class UserController {
 
-    private final UserUtil     userUtil;
-    private final IUserService userService;
-
-    @Value("${refreshTokenExpireTime}")
-    private String refreshTokenExpireTime;
+    private final UserUtil         userUtil;
+    private final IUserService     userService;
+    private final IUserRoleService userRoleService;
 
     @Autowired
-    public UserController(UserUtil userUtil, IUserService userService) {
-        this.userUtil    = userUtil;
-        this.userService = userService;
+    public UserController(UserUtil userUtil, IUserService userService, IUserRoleService userRoleService) {
+        this.userUtil        = userUtil;
+        this.userService     = userService;
+        this.userRoleService = userRoleService;
     }
 
     @PostMapping("/login")
@@ -69,7 +67,7 @@ public class UserController {
         String username = params.get("username");
         String password = params.get("password");
         if (StringUtils.isAnyBlank(username, password)) {
-            return ResponseBeanUtil.buildResponseByCode(ResponseCodeEnum.USERNAME_OR_PASSWORD_NOT_BLANK_ERROR);
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.USERNAME_OR_PASSWORD_NOT_BLANK_ERROR);
         }
         User user = userService.getByUsername(username);
         if (user == null) {
@@ -88,73 +86,94 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    @RequiresPermissions(value = {"user:add"})
-    public ResponseBean add(@RequestBody UserDto userDto) {
-        ResponseCodeEnum codeEnum = preCheckUserInfo(userDto);
-        if (ResponseCodeEnum.SUCCESS.equals(codeEnum)) {
+//    @RequiresPermissions(value = {"user:add"})
+    public ResponseBean addUser(@RequestBody UserDto userDto) {
+        AdminResponseCodeEnum codeEnum = preCheckUserInfo(userDto);
+        if (AdminResponseCodeEnum.SUCCESS != codeEnum) {
             return ResponseBeanUtil.buildResponseByCode(codeEnum);
-        }
-        User user = userService.getByUsername(userDto.getUsername());
-        if (user != null) {
-            return ResponseBeanUtil.buildResponseByCode(ResponseCodeEnum.USER_REPEATED_ERROR);
         }
         User newUser = UserDto.transformUserDto(userDto);
         AesCipherUtil aesCipherUtil = new AesCipherUtil(newUser.getUsername());
         newUser.setPassword(aesCipherUtil.encrypt(newUser.getPassword()));
-        newUser.setStatus(UserStatusEnum.OPEN.getStatus());
         newUser.setCreateTime(LocalDateTime.now());
         newUser.setUpdateTime(LocalDateTime.now());
-        userService.save(newUser);
+        boolean flag = userService.save(newUser);
+        if (!flag) {
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.USER_ADD_FAIL_ERROR);
+        }
+        // 配置角色
+        AdminResponseCodeEnum adminResponseCodeEnum = configUserRole(newUser.getId(), userDto.getRoleIds());
+        if (AdminResponseCodeEnum.SUCCESS != adminResponseCodeEnum) {
+            return ResponseBeanUtil.buildResponseByCode(adminResponseCodeEnum);
+        }
         return ResponseBeanUtil.buildSuccessResponse();
     }
 
     @PostMapping("/update")
     @RequiresPermissions(value = {"user:update"})
-    public ResponseBean update(@RequestBody UserDto userDto) {
-        ResponseCodeEnum codeEnum = preCheckUserInfo(userDto);
-        if (ResponseCodeEnum.SUCCESS.equals(codeEnum)) {
+    public ResponseBean updateUser(@RequestBody UserDto userDto) {
+        AdminResponseCodeEnum codeEnum = preCheckUserInfo(userDto);
+        if (AdminResponseCodeEnum.SUCCESS != codeEnum) {
             return ResponseBeanUtil.buildResponseByCode(codeEnum);
         }
         if (!userDto.getRepeatPassword().equals(userDto.getPassword())) {
-            return ResponseBeanUtil.buildResponseByCode(ResponseCodeEnum.REPEAT_PASSWORD_NOT_EQUAL);
-        }
-        User user = userService.getByUsername(userDto.getUsername(), userDto.getId());
-        if (user != null) {
-            return ResponseBeanUtil.buildResponseByCode(ResponseCodeEnum.USER_REPEATED_ERROR);
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.REPEAT_PASSWORD_NOT_EQUAL);
         }
         User newUser = UserDto.transformUserDto(userDto);
         AesCipherUtil aesCipherUtil = new AesCipherUtil(newUser.getUsername());
         newUser.setPassword(aesCipherUtil.encrypt(newUser.getPassword()));
-        userDto.setUpdateTime(LocalDateTime.now());
-        userService.updateById(newUser);
+        newUser.setUpdateTime(LocalDateTime.now());
+        boolean flag = userService.updateById(newUser);
+        if (!flag) {
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.USER_UPDATE_FAIL_ERROR);
+        }
+        // 配置角色
+        AdminResponseCodeEnum adminResponseCodeEnum = configUserRole(newUser.getId(), userDto.getRoleIds());
+        if (AdminResponseCodeEnum.SUCCESS != adminResponseCodeEnum) {
+            return ResponseBeanUtil.buildResponseByCode(adminResponseCodeEnum);
+        }
         return ResponseBeanUtil.buildSuccessResponse();
     }
 
     @PostMapping("/delete")
     @RequiresPermissions(value = {"user:delete"})
-    public ResponseBean delete(Long id) {
+    public ResponseBean delete(@RequestBody Map<String, String> params) {
+        Long id = Long.parseLong(params.get("id"));
+        if (id <= 0) {
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.PARAM_ERROR);
+        }
+        User loginUser = this.userUtil.getUser();
+        if (id.equals(loginUser.getId())) {
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.USER_DELETE_YOURSELF_ERROR);
+        }
         User user = userService.getById(id);
         if (user == null) {
-            return ResponseBeanUtil.buildResponseByCode(ResponseCodeEnum.USER_NOT_EXISTS_ERROR);
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.USER_NOT_EXISTS_ERROR);
         }
-        userService.removeById(user);
+        boolean flag = userService.removeById(user);
+        if (!flag) {
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.USER_DELETE_FAIL_ERROR);
+        }
+        // TODO:删除用户与角色和权限的关联关系
+
         return ResponseBeanUtil.buildSuccessResponse();
     }
 
     @PostMapping("/updateStatus")
     @RequiresPermissions(value = {"user:status:update"})
     public ResponseBean updateStatus(Long id, Integer status) {
-        User user = userService.getById(id);
-        if (user == null) {
-            return ResponseBeanUtil.buildResponseByCode(ResponseCodeEnum.USER_NOT_EXISTS_ERROR);
+        if (status == null || (status != UserStatusEnum.OPEN.getStatus() && status != UserStatusEnum.CLOSE.getStatus())) {
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.USER_STATUS_NOT_EXIST_ERROR);
         }
-        user.setStatus(status);
-        userService.updateById(user);
+        boolean flag = userService.updateUserStatus(id, status);
+        if (!flag) {
+            return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.USER_STATUS_UPDATE_FAIL_ERROR);
+        }
         return ResponseBeanUtil.buildSuccessResponse();
     }
 
     @GetMapping("/search")
-    @RequiresPermissions(value = {"user:view"})
+    @RequiresPermissions(value = {"user:search"})
     public ResponseBean search(Long id, String username, Integer status, Integer page, Integer pageSize) {
         if (page == null) {
             page = 1;
@@ -200,38 +219,43 @@ public class UserController {
     // TODO:暂时停用该功能
     @PostMapping("/register")
     public ResponseBean register(@RequestBody UserDto userDto) {
-        ResponseCodeEnum codeEnum = preCheckUserInfo(userDto);
-        if (ResponseCodeEnum.SUCCESS.equals(codeEnum)) {
+        AdminResponseCodeEnum codeEnum = preCheckUserInfo(userDto);
+        if (AdminResponseCodeEnum.SUCCESS != codeEnum) {
             return ResponseBeanUtil.buildResponseByCode(codeEnum);
-        }
-        User user = userService.getByUsername(userDto.getUsername());
-        if (user != null) {
-            return ResponseBeanUtil.buildResponseByCode(ResponseCodeEnum.USER_REPEATED_ERROR);
         }
         User newUser = UserDto.transformUserDto(userDto);
         AesCipherUtil aesCipherUtil = new AesCipherUtil(newUser.getUsername());
         newUser.setPassword(aesCipherUtil.encrypt(newUser.getPassword()));
-        newUser.setStatus(UserStatusEnum.OPEN.getStatus());
         newUser.setCreateTime(LocalDateTime.now());
         newUser.setUpdateTime(LocalDateTime.now());
         userService.save(newUser);
         return ResponseBeanUtil.buildSuccessResponse();
     }
 
-    private ResponseCodeEnum preCheckUserInfo(UserDto userDto) {
+    @RequestMapping("/logout")
+    public ResponseBean logout(HttpServletResponse response) {
+        User user = this.userUtil.getUser();
+        String username = user.getUsername();
+        // 清空 redis 数据
+        JedisUtil.delKey(Constants.PREFIX_SHIRO_REFRESH_TOKEN + username);
+        JedisUtil.delKey(Constants.PREFIX_SHIRO_CACHE + username);
+        return ResponseBeanUtil.buildSuccessResponse();
+    }
+
+    private AdminResponseCodeEnum preCheckUserInfo(UserDto userDto) {
         // 为空校验
         if (StringUtils.isAnyBlank(userDto.getUsername(), userDto.getPassword())) {
-            return ResponseCodeEnum.USERNAME_OR_PASSWORD_NOT_BLANK_ERROR;
+            return AdminResponseCodeEnum.USERNAME_OR_PASSWORD_NOT_BLANK_ERROR;
         }
         // 用户名长度校验
         if (userDto.getUsername().length() < Constants.USERNAME_PASSWORD_MIN_LENGTH ||
             userDto.getUsername().length() > Constants.USERNAME_PASSWORD_MAX_LENGTH) {
-            return ResponseCodeEnum.USERNAME_LENGTH_ERROR;
+            return AdminResponseCodeEnum.USERNAME_LENGTH_ERROR;
         }
         // 密码长度校验
         if (userDto.getPassword().length() < Constants.USERNAME_PASSWORD_MIN_LENGTH ||
             userDto.getPassword().length() > Constants.USERNAME_PASSWORD_MAX_LENGTH) {
-            return ResponseCodeEnum.PASSWORD_LENGTH_ERROR;
+            return AdminResponseCodeEnum.PASSWORD_LENGTH_ERROR;
         }
         // 用户名合法化校验 大小写字母+数字
 
@@ -239,15 +263,45 @@ public class UserController {
 
         // 邮箱合法化
         if (StringUtils.isNotBlank(userDto.getEmail()) && EmailUtil.checkEmail(userDto.getEmail())) {
-            return ResponseCodeEnum.EMAIL_PATTERN_ERROR;
+            return AdminResponseCodeEnum.EMAIL_PATTERN_ERROR;
         }
         // 手机号合法化
         if (StringUtils.isNotBlank(userDto.getMobile()) && MobileUtil.checkMobile(userDto.getMobile())) {
-            return ResponseCodeEnum.MOBILE_PATTERN_ERROR;
+            return AdminResponseCodeEnum.MOBILE_PATTERN_ERROR;
         }
         // 性别合法化
 
-        return ResponseCodeEnum.SUCCESS;
+        // 状态判断
+        Integer status = userDto.getStatus();
+        if (status == null || (status != UserStatusEnum.OPEN.getStatus() && status != UserStatusEnum.CLOSE.getStatus())) {
+            return AdminResponseCodeEnum.USER_STATUS_NOT_EXIST_ERROR;
+        }
+
+        // 查询用户名是否存在
+        User user = userService.getByUsername(userDto.getUsername(), userDto.getId());
+        if (user != null) {
+            return AdminResponseCodeEnum.USER_REPEATED_ERROR;
+        }
+
+        return AdminResponseCodeEnum.SUCCESS;
+    }
+
+    private AdminResponseCodeEnum configUserRole(Long userId, List<Long> roleIds) {
+        // 删除用户原有角色
+        List<Long> existRoleIds = this.userRoleService.getRoleIdsByUserId(userId);
+        if (existRoleIds.size() > 0) {
+            boolean flag = userRoleService.removeByUserId(userId);
+            if (!flag) {
+                return AdminResponseCodeEnum.DELETE_USER_ROLES_ERROR;
+            }
+        }
+        // 批量新增新角色
+        List<UserRole> userRoles = UserDto.transformUserRoles(userId, roleIds);
+        boolean flag = userRoleService.saveBatch(userRoles);
+        if (!flag) {
+            return AdminResponseCodeEnum.ADD_USER_ROLES_ERROR;
+        }
+        return AdminResponseCodeEnum.SUCCESS;
     }
 
 }

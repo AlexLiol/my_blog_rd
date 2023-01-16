@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.study.blog.blog_core.constant.UserStatusEnum;
 import com.study.blog.blog_dao.mapper.UserMapper;
@@ -33,7 +34,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public User getByUsername(String username, Long exceptId) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("username", username).eq("status", UserStatusEnum.OPEN.getStatus()).ne("id", exceptId);
+        queryWrapper.eq("username", username).eq("status", UserStatusEnum.OPEN.getStatus());
+        if (exceptId != null && exceptId > 0) {
+            queryWrapper.ne("id", exceptId);
+        }
         return this.getOne(queryWrapper);
     }
 
@@ -70,4 +74,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return this.list(queryWrapper);
     }
 
+    @Override
+    public boolean updateUserStatus(Long id, Integer status) {
+        UpdateWrapper<User> wrapper = new UpdateWrapper<>();
+        wrapper.set("status", status);
+        wrapper.eq("id", id);
+        return this.update(wrapper);
+    }
 }

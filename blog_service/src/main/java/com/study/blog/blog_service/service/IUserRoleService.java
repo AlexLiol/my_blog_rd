@@ -18,4 +18,6 @@ public interface IUserRoleService extends IBaseService<UserRole> {
      * 根据用户ID获取角色ID列表
      */
     List<Long> getRoleIdsByUserId(Long userId);
+
+    boolean removeByUserId(Long id);
 }

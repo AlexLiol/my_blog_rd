@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.study.blog.blog_admin.utils.ResponseBeanUtil;
-import com.study.blog.blog_core.constant.ResponseCodeEnum;
+import com.study.blog.blog_core.constant.AdminResponseCodeEnum;
 import com.study.blog.blog_model.common.ResponseBean;
 import com.study.blog.blog_model.exception.CustomException;
 import com.study.blog.blog_model.exception.CustomUnauthorizedException;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @ClassName ExceptionAdvice
@@ -32,6 +34,7 @@ import com.study.blog.blog_model.exception.CustomUnauthorizedException;
  * @Version 1.0
  */
 @RestControllerAdvice
+@Slf4j
 public class ExceptionAdvice {
 
     /**
@@ -102,7 +105,7 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(CustomException.class)
     public ResponseBean handle(CustomException e) {
-        return ResponseBeanUtil.buildResponseByCode(ResponseCodeEnum.SERVER_ERROR);
+        return ResponseBeanUtil.buildResponseByCode(AdminResponseCodeEnum.SERVER_ERROR);
     }
 
     /**
@@ -119,7 +122,10 @@ public class ExceptionAdvice {
      */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    public ResponseBean globalException(HttpServletRequest request, Throwable ex) {
+    public ResponseBean globalException(HttpServletRequest request, Throwable ex) throws Throwable {
+        if (ex != null) {
+            throw ex;
+        }
         return ResponseBeanUtil.newResponse(getStatus(request).value(), ex.toString() + ":" + ex.getMessage());
     }
 

@@ -30,4 +30,13 @@ public class RolePermissionServiceImpl extends ServiceImpl<RolePermissionMapper,
         List<RolePermission> rolePermissions = this.list(queryWrapper);
         return rolePermissions.stream().map(RolePermission::getPermissionId).collect(Collectors.toList());
     }
+
+    @Override
+    public boolean removeByRoleId(Long roleId) {
+        QueryWrapper<RolePermission> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("role_id", roleId);
+        return this.remove(queryWrapper);
+    }
+
+
 }
